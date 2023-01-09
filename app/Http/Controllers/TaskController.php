@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class TaskController extends Controller
 {
     /**
-     * タスク一覧ページ を表示する
+     * タスク一覧ページを表示する
      * 
      * @return \Illuminate\View\View
      */
