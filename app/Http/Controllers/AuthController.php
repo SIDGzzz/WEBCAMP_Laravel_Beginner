@@ -7,7 +7,6 @@ use App\Http\Requests\LoginPostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-
 class AuthController extends Controller
 {
     /**
@@ -44,10 +43,16 @@ class AuthController extends Controller
         $request->session()->regenerate();
         return redirect()->intended('/task/list');
     }
-    protected function redirectTo($request)
+
+    /**
+     * ログアウト処理
+     * 
+     */
+    public function logout(Request $request)
     {
-        if (! $request->expectsJson()) {
-            return route('front.index');
-        }
+        Auth::logout();
+        $request->session()->regenerateToken();  // CSRFトークンの再生成
+        $request->session()->regenerate();  // セッションIDの再生成
+        return redirect(route('front.index'));
     }
 }

@@ -23,7 +23,7 @@ Route::post('/login', [AuthController::class, 'login']);
 // 認可処理
 Route::middleware(['auth'])->group(function () {
     Route::get('/task/list', [TaskController::class, 'list']);
-    Route::get('/', [AuthController::class, 'index'])->name('front.index');
+    Route::get('/logout', [AuthController::class, 'logout']);
 });
 
 
