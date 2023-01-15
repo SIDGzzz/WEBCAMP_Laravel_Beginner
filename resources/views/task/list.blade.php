@@ -39,7 +39,7 @@
             <td>{{ $task->name }}
             <td>{{ $task->period }}
             <td>{{ $task->getPriorityString() }}
-            <td><a href="./detail.html">詳細閲覧</a>
+            <td><a href="{{ route('detail', ['task_id' => $task->id]) }}">詳細閲覧</a>
             <td><a href="./edit.html">編集</a>
             <td><form action="./top.html"><button>完了</button></form></a>
 @endforeach
@@ -60,7 +60,7 @@
         @endif
         /
         @if ($list->nextPageUrl() !== null)
-            <a href="{{ $list->nextPageUrl() }}">次に進む</a>
+            <a href="{{ $list->nextPageUrl() }}"><button>次に進む</button></a>
         @else
             次に進む
         @endif
