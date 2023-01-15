@@ -5,7 +5,7 @@
 
 {{-- メインコンテンツ --}}
 @section('contets')
-        <h1>タスクの登録(未実装)</h1>
+        <h1>タスクの登録</h1>
             @if (session('front.task_register_success') == true)
                 タスクを登録しました！！<br>
             @endif
@@ -36,7 +36,7 @@
                 <button>タスクを登録する</button>
             </form>
 
-        <h1>タスクの一覧(未実装)</h1>
+        <h1>タスクの一覧</h1>
         <a href="./top.html">CSVダウンロード(未実装)</a><br>
         <table border="1">
         <tr>
@@ -57,9 +57,9 @@
         {{-- {{ $list->links() }} --}}
         現在 {{ $list->currentPage() }} ページ目<br>
         @if ($list->onFirstPage() === false)
-        <a href="/task/list">最初のページ</a>
+            <a href="/task/list">最初のページ</a>
         @else
-        最初のページ
+            最初のページ
         @endif
         /
         @if ($list->previousPageUrl() !== null)
@@ -69,7 +69,7 @@
         @endif
         /
         @if ($list->nextPageUrl() !== null)
-            <a href="{{ $list->nextPageUrl() }}"><button>次に進む</button></a>
+            <a href="{{ $list->nextPageUrl() }}">次に進む</a>
         @else
             次に進む
         @endif
