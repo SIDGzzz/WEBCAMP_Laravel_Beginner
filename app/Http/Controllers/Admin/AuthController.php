@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginPostRequest;
+use App\Http\Requests\AdminLoginPostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('index');
+        return view('admin.index');
     }
 
     /**
@@ -50,9 +50,9 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
         $request->session()->regenerateToken();  // CSRFトークンの再生成
         $request->session()->regenerate();  // セッションIDの再生成
-        return redirect(route('front.index'));
+        return redirect(route('admin.index'));
     }
 }
