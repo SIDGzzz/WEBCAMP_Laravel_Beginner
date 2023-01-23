@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/complete/{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
         Route::get('/csv/download', [TaskController::class, 'csvDownload']);
     });
+    //完了タスク一覧（★追加）
+    Route::get('/completed_tasks/list', [CompletedTaskController::class, 'list']);
     //
     Route::get('/logout', [AuthController::class, 'logout']);
 });
@@ -52,12 +54,6 @@ Route::prefix('/admin')->group(function () {
     Route::get('/logout', [AdminAuthController::class, 'logout']);
     
 });
-//完了タスク一覧
- Route::prefix('/completed_tasks')->group(function () {
-    Route::get('/list', [CompletedTaskController::class, 'list']);
-    Route::get('/logout', [CompletedTaskController::class, 'logout']);
- });
-
 // テスト用
 Route::get('/welcome', [WelcomeController::class, 'index']);
 Route::get('/welcome/second', [WelcomeController::class, 'second']);
