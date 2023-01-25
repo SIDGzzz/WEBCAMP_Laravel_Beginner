@@ -8,14 +8,6 @@
         <h1>ユーザー登録</h1>
         @if (session('front.task_register_success') == true)
                 ユーザーを登録しました！！<br>
-        @endif
-        
-        @if ($errors->any())
-                <div>
-                @foreach ($errors->all() as $error)
-                    {{ $error }}<br>
-                @endforeach
-                </div>
             @endif
         <form action="/user/register" method="post">
             @csrf
